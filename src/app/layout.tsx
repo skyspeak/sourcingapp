@@ -25,36 +25,36 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} bg-zinc-50 text-zinc-950 antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} bg-gray-50 text-gray-900 antialiased`}
       >
         <div className="min-h-screen">
-          <header className="border-b border-zinc-200 bg-white">
-            <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+          <header className="border-b border-gray-200 bg-white shadow-sm">
+            <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
               <div className="flex items-center gap-3">
-                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-zinc-900 text-white">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-600 text-white font-bold text-sm">
                   SR
                 </div>
                 <div>
-                  <p className="text-sm uppercase tracking-[0.2em] text-zinc-500">
+                  <p className="text-xs uppercase tracking-[0.25em] text-gray-500 font-semibold">
                     Sourcing Room
                   </p>
-                  <p className="text-lg font-semibold">Early-Stage Fundraising</p>
+                  <p className="text-lg font-bold text-gray-900">Early-Stage Fundraising</p>
                 </div>
               </div>
-              <nav className="flex items-center gap-4 text-sm font-medium text-zinc-600">
-                <a className="hover:text-zinc-900" href="/">
+              <nav className="flex items-center gap-6 text-sm font-semibold">
+                <a className="text-gray-700 hover:text-blue-600 transition-colors" href="/">
                   Overview
                 </a>
-                <a className="hover:text-zinc-900" href="/deals">
+                <a className="text-gray-700 hover:text-blue-600 transition-colors" href="/deals">
                   Deals
                 </a>
-                <a className="hover:text-zinc-900" href="/deals/new">
+                <a className="text-gray-700 hover:text-blue-600 transition-colors" href="/deals/new">
                   New Deal
                 </a>
               </nav>
             </div>
           </header>
-          <main className="mx-auto max-w-6xl px-6 py-10">{children}</main>
+          <main className="mx-auto max-w-6xl px-6 py-12">{children}</main>
         </div>
       </body>
     </html>
