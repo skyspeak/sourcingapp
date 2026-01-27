@@ -5,9 +5,10 @@ import { getFounderById } from "@/lib/founders";
 export default async function FounderDetailPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  const founder = await getFounderById(params.id);
+  const { id } = await params;
+  const founder = await getFounderById(id);
   if (!founder) {
     notFound();
   }

@@ -36,9 +36,10 @@ function List({ items }: { items?: string[] }) {
 export default async function DealDetailPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  const deal = await getDealById(params.id);
+  const { id } = await params;
+  const deal = await getDealById(id);
   if (!deal) {
     notFound();
   }

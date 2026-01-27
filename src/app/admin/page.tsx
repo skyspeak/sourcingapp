@@ -5,13 +5,14 @@ import { loginAdminAction } from "@/lib/actions";
 export default async function AdminPage({
   searchParams,
 }: {
-  searchParams?: { error?: string; next?: string };
+  searchParams?: Promise<{ error?: string; next?: string }>;
 }) {
   const cookieStore = await cookies();
   const isAdmin = cookieStore.get("admin_access")?.value === "true";
-  const nextPath = searchParams?.next ?? "/admin";
+  const params = await searchParams;
+  const nextPath = params?.next ?? "/admin";
   const error =
-    searchParams?.error === "invalid" ? "Invalid admin password." : null;
+    params?.error === "invalid" ? "Invalid admin password." : null;
 
   if (!isAdmin) {
     return (

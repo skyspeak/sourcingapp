@@ -8,26 +8,28 @@ export default async function SharePage({
   params,
   searchParams,
 }: {
-  params: { token: string };
-  searchParams?: { error?: string };
+  params: Promise<{ token: string }>;
+  searchParams?: Promise<{ error?: string }>;
 }) {
-  const shareData = await getShareLinkByToken(params.token);
+  const { token } = await params;
+  const shareData = await getShareLinkByToken(token);
   if (!shareData) {
     notFound();
   }
 
   const { deal, shareLink } = shareData;
   const cookieStore = await cookies();
-  const accessCookie = cookieStore.get(`share_access_${params.token}`)?.value;
+  const accessCookie = cookieStore.get(`share_access_${token}`)?.value;
   const gateRequired = shareLink.emailGateRequired || Boolean(shareLink.password);
 
   if (gateRequired && !accessCookie) {
+    const queryParams = await searchParams;
     const errorMessage =
-      searchParams?.error === "wrong-password"
+      queryParams?.error === "wrong-password"
         ? "Password did not match."
-        : searchParams?.error === "missing-email"
+        : queryParams?.error === "missing-email"
         ? "Email is required."
-        : searchParams?.error === "not-found"
+        : queryParams?.error === "not-found"
         ? "Share link not found."
         : null;
 
@@ -53,7 +55,7 @@ export default async function SharePage({
         )}
 
         <form
-          action={verifyShareAccessAction.bind(null, params.token)}
+          action={verifyShareAccessAction.bind(null, token)}
           className="grid gap-4 text-sm"
         >
           <label className="grid gap-2">
