@@ -1,4 +1,4 @@
-("use server");
+"use server";
 
 import path from "path";
 import { promises as fs } from "fs";
@@ -14,7 +14,8 @@ import {
   sanitizeFilename,
   updateDeal,
 } from "./data";
-import type { DealInput } from "./types";
+import { createFounder } from "./founders";
+import type { DealInput, FounderInput } from "./types";
 
 function getText(formData: FormData, key: string): string {
   return String(formData.get(key) ?? "").trim();
@@ -148,11 +149,45 @@ export async function verifyShareAccessAction(
     redirect(`/share/${token}?error=wrong-password`);
   }
 
-  cookies().set(accessCookie, email || "viewer", {
+  const cookieStore = await cookies();
+  cookieStore.set(accessCookie, email || "viewer", {
     httpOnly: true,
     sameSite: "lax",
     maxAge: 60 * 60 * 24,
   });
 
   redirect(`/share/${token}`);
+}
+
+const ADMIN_SECRET = process.env.ADMIN_SECRET ?? "sourcing-admin";
+
+export async function loginAdminAction(formData: FormData): Promise<void> {
+  const password = getText(formData, "password");
+  const next = getText(formData, "next") || "/admin";
+
+  if (password !== ADMIN_SECRET) {
+    redirect(`/admin?error=invalid&next=${encodeURIComponent(next)}`);
+  }
+
+  const cookieStore = await cookies();
+  cookieStore.set("admin_access", "true", {
+    httpOnly: true,
+    sameSite: "lax",
+    maxAge: 60 * 60 * 8,
+  });
+
+  redirect(next);
+}
+
+export async function createFounderAction(formData: FormData): Promise<void> {
+  const input: FounderInput = {
+    name: getText(formData, "name"),
+    title: getText(formData, "title"),
+    bio: getText(formData, "bio"),
+    accomplishments: parseList(getText(formData, "accomplishments")),
+    linkedin: getText(formData, "linkedin") || undefined,
+  };
+
+  const founder = await createFounder(input);
+  redirect(`/founders/${founder.id}`);
 }

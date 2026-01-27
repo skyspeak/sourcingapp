@@ -1,0 +1,18 @@
+{
+  "founders": [
+    {
+      "id": "maya-chen",
+      "name": "Maya Chen",
+      "title": "Co-founder & CEO",
+      "bio": "Former Stripe PM who built Revenue Insights and led analytics GTM.",
+      "accomplishments": [
+        "YC W23 alum",
+        "Built analytics products used by 1,000+ revenue teams",
+        "Keynote speaker at SaaStr 2025"
+      ],
+      "linkedin": "https://www.linkedin.com/in/example",
+      "createdAt": "2026-01-26T12:00:00.000Z",
+      "updatedAt": "2026-01-26T12:00:00.000Z"
+    }
+  ]
+}

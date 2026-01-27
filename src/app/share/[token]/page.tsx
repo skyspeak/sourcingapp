@@ -17,7 +17,8 @@ export default async function SharePage({
   }
 
   const { deal, shareLink } = shareData;
-  const accessCookie = cookies().get(`share_access_${params.token}`)?.value;
+  const cookieStore = await cookies();
+  const accessCookie = cookieStore.get(`share_access_${params.token}`)?.value;
   const gateRequired = shareLink.emailGateRequired || Boolean(shareLink.password);
 
   if (gateRequired && !accessCookie) {

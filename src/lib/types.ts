@@ -46,3 +46,16 @@ export type DealInput = Omit<
 };
 
 export type DealUpdate = Partial<DealInput>;
+
+export type Founder = {
+  id: string;
+  name: string;
+  title: string;
+  bio: string;
+  accomplishments: string[];
+  linkedin?: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type FounderInput = Omit<Founder, "id" | "createdAt" | "updatedAt">;
