@@ -1,0 +1,50 @@
+{
+  "deals": [
+    {
+      "id": "seed-aurora-analytics",
+      "name": "Aurora Analytics",
+      "space": "AI-enabled revenue intelligence for mid-market SaaS",
+      "stage": "Seed",
+      "summary": "Turns product usage into forecastable pipeline with automated expansion signals.",
+      "location": "San Francisco, CA",
+      "fundraisingTarget": "$2.5M seed round",
+      "useOfFunds": "Scale GTM, expand data integrations, and hire senior engineering.",
+      "traction": {
+        "dealsSoldMonthly": 18,
+        "commitmentsMonthly": 12,
+        "notes": "3 enterprise pilots, 115% net revenue retention, 4 design partners converting."
+      },
+      "founders": [
+        "Maya Chen — ex-Stripe PM, built Revenue Insights and led GTM analytics.",
+        "Leo Park — ex-Snowflake data engineer, scaled ingestion to 5B events/day."
+      ],
+      "accomplishments": [
+        "YC W23 alumni",
+        "Signed LOIs with 4 public SaaS companies",
+        "Won SaaStr Pitch 2025 finalist"
+      ],
+      "team": [
+        "3 engineers (data, infra, full-stack)",
+        "1 product designer",
+        "1 sales lead (ex-Okta)"
+      ],
+      "customers": [
+        "Launchpad CRM (paid pilot)",
+        "CloudDock (design partner)",
+        "Orbitly (signed annual)"
+      ],
+      "comps": [
+        "Gong (NASDAQ: GONG) - revenue intelligence",
+        "Clari (private) - forecasting",
+        "Apollo (private) - sales intelligence"
+      ],
+      "deck": {
+        "externalUrl": "https://example.com/aurora-deck.pdf",
+        "uploadedAt": "2026-01-26T12:00:00.000Z"
+      },
+      "shareLinks": [],
+      "createdAt": "2026-01-26T12:00:00.000Z",
+      "updatedAt": "2026-01-26T12:00:00.000Z"
+    }
+  ]
+}
