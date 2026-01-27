@@ -79,6 +79,18 @@ export default async function AdminPage({
           </p>
         </Link>
         <Link
+          href="/admin/bulk-upload"
+          className="rounded-3xl border border-zinc-200 bg-white p-6 text-sm shadow-sm"
+        >
+          <p className="text-xs uppercase tracking-[0.3em] text-zinc-500">
+            Bulk import
+          </p>
+          <h2 className="mt-2 text-lg font-semibold">Upload CSV</h2>
+          <p className="mt-2 text-sm text-zinc-600">
+            Import multiple deals at once from a CSV file.
+          </p>
+        </Link>
+        <Link
           href="/admin/deals"
           className="rounded-3xl border border-zinc-200 bg-white p-6 text-sm shadow-sm"
         >

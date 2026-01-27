@@ -191,3 +191,41 @@ export async function createFounderAction(formData: FormData): Promise<void> {
   const founder = await createFounder(input);
   redirect(`/founders/${founder.id}`);
 }
+
+export async function bulkUploadDealsAction(
+  csvContent: string
+): Promise<{ success: number; failed: number; errors: string[] }> {
+  const Papa = (await import("papaparse")).default;
+  const { csvRowToDealInput } = await import("./csv-parser");
+
+  const result = Papa.parse<Record<string, string>>(csvContent, {
+    header: true,
+    skipEmptyLines: true,
+  });
+
+  let successCount = 0;
+  let failedCount = 0;
+  const errors: string[] = [];
+
+  for (let i = 0; i < result.data.length; i++) {
+    const row = result.data[i];
+    const rowNum = i + 2; // +2 for header row and 1-based indexing
+
+    try {
+      const dealInput = csvRowToDealInput(row as any);
+      if (!dealInput) {
+        errors.push(`Row ${rowNum}: Missing required fields`);
+        failedCount++;
+        continue;
+      }
+
+      await createDeal(dealInput);
+      successCount++;
+    } catch (error) {
+      errors.push(`Row ${rowNum}: ${error instanceof Error ? error.message : "Unknown error"}`);
+      failedCount++;
+    }
+  }
+
+  return { success: successCount, failed: failedCount, errors };
+}
