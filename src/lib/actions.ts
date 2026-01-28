@@ -37,11 +37,17 @@ function parseNumber(value: string): number | null {
 function buildDealInput(formData: FormData): DealInput {
   return {
     name: getText(formData, "name"),
+    companyLink: getText(formData, "companyLink") || undefined,
+    tldr: getText(formData, "tldr") || undefined,
     space: getText(formData, "space"),
     stage: getText(formData, "stage"),
     summary: getText(formData, "summary"),
     location: getText(formData, "location"),
     fundraisingTarget: getText(formData, "fundraisingTarget"),
+    pastRaise: getText(formData, "pastRaise") || undefined,
+    pastValuation: getText(formData, "pastValuation") || undefined,
+    expectedValuation: getText(formData, "expectedValuation") || undefined,
+    tentativeTimeline: getText(formData, "tentativeTimeline") || undefined,
     useOfFunds: getText(formData, "useOfFunds"),
     traction: {
       dealsSoldMonthly: parseNumber(getText(formData, "dealsSoldMonthly")),

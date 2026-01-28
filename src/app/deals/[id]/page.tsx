@@ -63,7 +63,26 @@ export default async function DealDetailPage({
       </header>
 
       <Section title="Snapshot">
-        <div className="grid gap-2 text-sm">
+        <div className="grid gap-3 text-sm">
+          {deal.companyLink && (
+            <p>
+              <span className="font-semibold text-zinc-900">Company:</span>{" "}
+              <a
+                href={deal.companyLink}
+                target="_blank"
+                rel="noreferrer"
+                className="text-blue-600 underline hover:text-blue-700"
+              >
+                {deal.companyLink}
+              </a>
+            </p>
+          )}
+          {deal.tldr && (
+            <p>
+              <span className="font-semibold text-zinc-900">TL;DR:</span>{" "}
+              {deal.tldr}
+            </p>
+          )}
           <p>
             <span className="font-semibold text-zinc-900">Summary:</span>{" "}
             {deal.summary || "Not provided."}
@@ -76,6 +95,30 @@ export default async function DealDetailPage({
             <span className="font-semibold text-zinc-900">Fundraising target:</span>{" "}
             {deal.fundraisingTarget || "Not provided."}
           </p>
+          {deal.pastRaise && (
+            <p>
+              <span className="font-semibold text-zinc-900">Past raise:</span>{" "}
+              {deal.pastRaise}
+            </p>
+          )}
+          {deal.pastValuation && (
+            <p>
+              <span className="font-semibold text-zinc-900">Past valuation:</span>{" "}
+              {deal.pastValuation}
+            </p>
+          )}
+          {deal.expectedValuation && (
+            <p>
+              <span className="font-semibold text-zinc-900">Expected valuation:</span>{" "}
+              {deal.expectedValuation}
+            </p>
+          )}
+          {deal.tentativeTimeline && (
+            <p>
+              <span className="font-semibold text-zinc-900">Tentative timeline:</span>{" "}
+              {deal.tentativeTimeline}
+            </p>
+          )}
         </div>
       </Section>
 

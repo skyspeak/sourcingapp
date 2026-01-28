@@ -15,11 +15,17 @@ export type Deck = {
 export type Deal = {
   id: string;
   name: string;
+  companyLink?: string;
+  tldr?: string;
   space: string;
   stage: string;
   summary: string;
   location: string;
   fundraisingTarget: string;
+  pastRaise?: string;
+  pastValuation?: string;
+  expectedValuation?: string;
+  tentativeTimeline?: string;
   useOfFunds: string;
   traction: {
     dealsSoldMonthly?: number | null;

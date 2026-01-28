@@ -27,6 +27,26 @@ export default function DealForm({ initial, action, submitLabel }: DealFormProps
             />
           </label>
           <label className="grid gap-2 text-sm">
+            Company link
+            <input
+              name="companyLink"
+              type="url"
+              defaultValue={initial?.companyLink ?? ""}
+              className="rounded-xl border border-zinc-200 px-4 py-2"
+              placeholder="https://company.com"
+            />
+          </label>
+          <label className="grid gap-2 text-sm md:col-span-2">
+            TL;DR
+            <textarea
+              name="tldr"
+              rows={2}
+              defaultValue={initial?.tldr ?? ""}
+              className="rounded-xl border border-zinc-200 px-4 py-2"
+              placeholder="Quick summary in one sentence"
+            />
+          </label>
+          <label className="grid gap-2 text-sm">
             Stage
             <input
               name="stage"
@@ -34,6 +54,15 @@ export default function DealForm({ initial, action, submitLabel }: DealFormProps
               defaultValue={initial?.stage ?? ""}
               className="rounded-xl border border-zinc-200 px-4 py-2"
               placeholder="Seed"
+            />
+          </label>
+          <label className="grid gap-2 text-sm">
+            Location
+            <input
+              name="location"
+              defaultValue={initial?.location ?? ""}
+              className="rounded-xl border border-zinc-200 px-4 py-2"
+              placeholder="San Francisco, CA"
             />
           </label>
           <label className="grid gap-2 text-sm md:col-span-2">
@@ -58,15 +87,6 @@ export default function DealForm({ initial, action, submitLabel }: DealFormProps
             />
           </label>
           <label className="grid gap-2 text-sm">
-            Location
-            <input
-              name="location"
-              defaultValue={initial?.location ?? ""}
-              className="rounded-xl border border-zinc-200 px-4 py-2"
-              placeholder="San Francisco, CA"
-            />
-          </label>
-          <label className="grid gap-2 text-sm">
             Fundraising target
             <input
               name="fundraisingTarget"
@@ -74,6 +94,42 @@ export default function DealForm({ initial, action, submitLabel }: DealFormProps
               defaultValue={initial?.fundraisingTarget ?? ""}
               className="rounded-xl border border-zinc-200 px-4 py-2"
               placeholder="$2.5M seed round"
+            />
+          </label>
+          <label className="grid gap-2 text-sm">
+            Past raise
+            <input
+              name="pastRaise"
+              defaultValue={initial?.pastRaise ?? ""}
+              className="rounded-xl border border-zinc-200 px-4 py-2"
+              placeholder="$500K pre-seed"
+            />
+          </label>
+          <label className="grid gap-2 text-sm">
+            Past valuation
+            <input
+              name="pastValuation"
+              defaultValue={initial?.pastValuation ?? ""}
+              className="rounded-xl border border-zinc-200 px-4 py-2"
+              placeholder="$2M post-money"
+            />
+          </label>
+          <label className="grid gap-2 text-sm">
+            Expected valuation
+            <input
+              name="expectedValuation"
+              defaultValue={initial?.expectedValuation ?? ""}
+              className="rounded-xl border border-zinc-200 px-4 py-2"
+              placeholder="$10M post-money"
+            />
+          </label>
+          <label className="grid gap-2 text-sm md:col-span-2">
+            Tentative timeline
+            <input
+              name="tentativeTimeline"
+              defaultValue={initial?.tentativeTimeline ?? ""}
+              className="rounded-xl border border-zinc-200 px-4 py-2"
+              placeholder="Closing in Q2 2026"
             />
           </label>
         </div>

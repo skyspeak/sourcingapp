@@ -2,11 +2,17 @@ import type { DealInput } from "./types";
 
 export type CSVRow = {
   name: string;
+  companyLink?: string;
+  tldr?: string;
   space: string;
   stage: string;
   summary: string;
   location: string;
   fundraisingTarget: string;
+  pastRaise?: string;
+  pastValuation?: string;
+  expectedValuation?: string;
+  tentativeTimeline?: string;
   useOfFunds: string;
   dealsSoldMonthly?: string;
   commitmentsMonthly?: string;
@@ -41,11 +47,17 @@ export function csvRowToDealInput(row: CSVRow): DealInput | null {
 
   const input: DealInput = {
     name: row.name.trim(),
+    companyLink: row.companyLink?.trim() || undefined,
+    tldr: row.tldr?.trim() || undefined,
     space: row.space.trim(),
     stage: row.stage.trim(),
     summary: row.summary.trim(),
     location: row.location?.trim() || "",
     fundraisingTarget: row.fundraisingTarget.trim(),
+    pastRaise: row.pastRaise?.trim() || undefined,
+    pastValuation: row.pastValuation?.trim() || undefined,
+    expectedValuation: row.expectedValuation?.trim() || undefined,
+    tentativeTimeline: row.tentativeTimeline?.trim() || undefined,
     useOfFunds: row.useOfFunds?.trim() || "",
     traction: {
       dealsSoldMonthly: parseNumber(row.dealsSoldMonthly),
@@ -73,11 +85,17 @@ export function csvRowToDealInput(row: CSVRow): DealInput | null {
 export function generateSampleCSV(): string {
   const headers = [
     "name",
+    "companyLink",
+    "tldr",
     "space",
     "stage",
     "summary",
     "location",
     "fundraisingTarget",
+    "pastRaise",
+    "pastValuation",
+    "expectedValuation",
+    "tentativeTimeline",
     "useOfFunds",
     "dealsSoldMonthly",
     "commitmentsMonthly",
@@ -92,11 +110,17 @@ export function generateSampleCSV(): string {
 
   const sampleRow = [
     "Aurora Analytics",
+    "https://auroraanalytics.com",
+    "AI-powered revenue intelligence that predicts expansion opportunities",
     "AI-enabled revenue intelligence for mid-market SaaS",
     "Seed",
     "Turns product usage into forecastable pipeline with automated expansion signals",
     "San Francisco, CA",
     "$2.5M seed round",
+    "$500K pre-seed",
+    "$2M post-money",
+    "$10M post-money",
+    "Closing Q2 2026",
     "Scale GTM, expand data integrations, and hire senior engineering",
     "18",
     "12",

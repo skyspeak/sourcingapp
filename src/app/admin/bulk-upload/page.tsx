@@ -90,8 +90,11 @@ export default function BulkUploadPage() {
             </h3>
             <ul className="mt-2 grid gap-1 text-sm text-zinc-700">
               <li>
-                • location, useOfFunds, dealsSoldMonthly, commitmentsMonthly,
-                tractionNotes
+                • companyLink, tldr, location, pastRaise, pastValuation,
+                expectedValuation, tentativeTimeline
+              </li>
+              <li>
+                • useOfFunds, dealsSoldMonthly, commitmentsMonthly, tractionNotes
               </li>
               <li>• founders, accomplishments, team, customers, comps (use | separator)</li>
               <li>• deckUrl</li>
